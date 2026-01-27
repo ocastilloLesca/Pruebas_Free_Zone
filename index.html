@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas Free Zone - Reportes de Red</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .wan-report {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+        
+        .wan-report h2 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        
+        .wan-report a {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        .wan-report a:hover {
+            background: #45a049;
+        }
+        
+        .switch-section {
+            margin-bottom: 40px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .switch-section h2 {
+            color: #1976d2;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #1976d2;
+        }
+        
+        .ports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .port-link {
+            display: block;
+            background: white;
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 6px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .port-link:hover {
+            border-color: #1976d2;
+            background: #e3f2fd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+        }
+        
+        .ap-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .ap-section h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .ap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+        }
+        
+        .ap-link {
+            display: block;
+            background: white;
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 6px;
+            border: 2px solid #ffcc80;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .ap-link:hover {
+            border-color: #ff9800;
+            background: #fff3e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+        }
+        
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        .info-badge {
+            display: inline-block;
+            background: #2196f3;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .ports-grid, .ap-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 1.6em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Pruebas Free Zone</h1>
+            <p>Reportes de Infraestructura de Red</p>
+        </header>
+        
+        <div class="content">
+            <!-- Reporte WAN -->
+            <div class="wan-report">
+                <h2>📊 Reporte Principal</h2>
+                <a href="Reporte de Velocidad WAN.html">Ver Reporte de Velocidad WAN</a>
+            </div>
+            
+            <!-- Switch 1 PP3 -->
+            <div class="switch-section">
+                <h2>🔌 Switch 1 - PP3 <span class="info-badge">24 Puertos</span></h2>
+                <div class="ports-grid">
+                    <a href="Switch_1_PP3/Puerto_01_SW_1_PP3.html" class="port-link">Puerto 01</a>
+                    <a href="Switch_1_PP3/Puerto_02_SW_1_PP3.html" class="port-link">Puerto 02</a>
+                    <a href="Switch_1_PP3/Puerto_03_SW_1_PP3.html" class="port-link">Puerto 03</a>
+                    <a href="Switch_1_PP3/Puerto_04_SW_1_PP3.html" class="port-link">Puerto 04</a>
+                    <a href="Switch_1_PP3/Puerto_05_SW_1_PP3.html" class="port-link">Puerto 05</a>
+                    <a href="Switch_1_PP3/Puerto_06_SW_1_PP3.html" class="port-link">Puerto 06</a>
+                    <a href="Switch_1_PP3/Puerto_07_SW_1_PP3.html" class="port-link">Puerto 07</a>
+                    <a href="Switch_1_PP3/Puerto_08_SW_1_PP3.html" class="port-link">Puerto 08</a>
+                    <a href="Switch_1_PP3/Puerto_09_SW_1_PP3.html" class="port-link">Puerto 09</a>
+                    <a href="Switch_1_PP3/Puerto_10_SW_1_PP3.html" class="port-link">Puerto 10</a>
+                    <a href="Switch_1_PP3/Puerto_11_SW_1_PP3.html" class="port-link">Puerto 11</a>
+                    <a href="Switch_1_PP3/Puerto_12_SW_1_PP3.html" class="port-link">Puerto 12</a>
+                    <a href="Switch_1_PP3/Puerto_13_SW_1_PP3.html" class="port-link">Puerto 13</a>
+                    <a href="Switch_1_PP3/Puerto_14_SW_1_PP3.html" class="port-link">Puerto 14</a>
+                    <a href="Switch_1_PP3/Puerto_15_SW_1_PP3.html" class="port-link">Puerto 15</a>
+                    <a href="Switch_1_PP3/Puerto_16_SW_1_PP3.html" class="port-link">Puerto 16</a>
+                    <a href="Switch_1_PP3/Puerto_17_SW_1_PP3.html" class="port-link">Puerto 17</a>
+                    <a href="Switch_1_PP3/Puerto_18_SW_1_PP3.html" class="port-link">Puerto 18</a>
+                    <a href="Switch_1_PP3/Puerto_19_SW_1_PP3.html" class="port-link">Puerto 19</a>
+                    <a href="Switch_1_PP3/Puerto_20_SW_1_PP3.html" class="port-link">Puerto 20</a>
+                    <a href="Switch_1_PP3/Puerto_21_SW_1_PP3.html" class="port-link">Puerto 21</a>
+                    <a href="Switch_1_PP3/Puerto_22_SW_1_PP3.html" class="port-link">Puerto 22</a>
+                    <a href="Switch_1_PP3/Puerto_23_SW_1_PP3.html" class="port-link">Puerto 23</a>
+                    <a href="Switch_1_PP3/Puerto_24_SW_1_PP3.html" class="port-link">Puerto 24</a>
+                </div>
+            </div>
+            
+            <!-- Switch 2 PP2 -->
+            <div class="switch-section">
+                <h2>🔌 Switch 2 - PP2 <span class="info-badge">24 Puertos</span></h2>
+                <div class="ports-grid">
+                    <a href="Switch_2_PP2/Puerto_01_SW_2_PP2.html" class="port-link">Puerto 01</a>
+                    <a href="Switch_2_PP2/Puerto_02_SW_2_PP2.html" class="port-link">Puerto 02</a>
+                    <a href="Switch_2_PP2/Puerto_03_SW_2_PP2.html" class="port-link">Puerto 03</a>
+                    <a href="Switch_2_PP2/Puerto_04_SW_2_PP2.html" class="port-link">Puerto 04</a>
+                    <a href="Switch_2_PP2/Puerto_05_SW_2_PP2.html" class="port-link">Puerto 05</a>
+                    <a href="Switch_2_PP2/Puerto_06_SW_2_PP2.html" class="port-link">Puerto 06</a>
+                    <a href="Switch_2_PP2/Puerto_07_SW_2_PP2.html" class="port-link">Puerto 07</a>
+                    <a href="Switch_2_PP2/Puerto_08_SW_2_PP2.html" class="port-link">Puerto 08</a>
+                    <a href="Switch_2_PP2/Puerto_09_SW_2_PP2.html" class="port-link">Puerto 09</a>
+                    <a href="Switch_2_PP2/Puerto_10_SW_2_PP2.html" class="port-link">Puerto 10</a>
+                    <a href="Switch_2_PP2/Puerto_11_SW_2_PP2.html" class="port-link">Puerto 11</a>
+                    <a href="Switch_2_PP2/Puerto_12_SW_2_PP2.html" class="port-link">Puerto 12</a>
+                    <a href="Switch_2_PP2/Puerto_13_SW_2_PP2.html" class="port-link">Puerto 13</a>
+                    <a href="Switch_2_PP2/Puerto_14_SW_2_PP2.html" class="port-link">Puerto 14</a>
+                    <a href="Switch_2_PP2/Puerto_15_SW_2_PP2.html" class="port-link">Puerto 15</a>
+                    <a href="Switch_2_PP2/Puerto_16_SW_2_PP2.html" class="port-link">Puerto 16</a>
+                    <a href="Switch_2_PP2/Puerto_17_SW_2_PP2.html" class="port-link">Puerto 17</a>
+                    <a href="Switch_2_PP2/Puerto_18_SW_2_PP2.html" class="port-link">Puerto 18</a>
+                    <a href="Switch_2_PP2/Puerto_19_SW_2_PP2.html" class="port-link">Puerto 19</a>
+                    <a href="Switch_2_PP2/Puerto_20_SW_2_PP2.html" class="port-link">Puerto 20</a>
+                    <a href="Switch_2_PP2/Puerto_21_SW_2_PP2.html" class="port-link">Puerto 21</a>
+                    <a href="Switch_2_PP2/Puerto_22_SW_2_PP2.html" class="port-link">Puerto 22</a>
+                    <a href="Switch_2_PP2/Puerto_23_SW_2_PP2.html" class="port-link">Puerto 23</a>
+                    <a href="Switch_2_PP2/Puerto_24_SW_2_PP2.html" class="port-link">Puerto 24</a>
+                </div>
+            </div>
+            
+            <!-- Switch 3 PP1 -->
+            <div class="switch-section">
+                <h2>🔌 Switch 3 - PP1</h2>
+                
+                <!-- Access Points -->
+                <div class="ap-section">
+                    <h3>📡 Access Points WiFi</h3>
+                    <div class="ap-grid">
+                        <a href="Switch_3_PP1/AP_01_RECEP_FREE_ZONE.html" class="ap-link">AP 01 - Recepción</a>
+                        <a href="Switch_3_PP1/AP_02_ALA_SUR_FREE_ZONE.html" class="ap-link">AP 02 - Ala Sur</a>
+                        <a href="Switch_3_PP1/AP_03_ALA_SUR_FREE_ZONE.html" class="ap-link">AP 03 - Ala Sur</a>
+                        <a href="Switch_3_PP1/AP_04_ALA_SUR_FREE_ZONE.html" class="ap-link">AP 04 - Ala Sur</a>
+                        <a href="Switch_3_PP1/AP_05_ALA_NORTE_FREE_ZONE_SW1_PTO_1.html" class="ap-link">AP 05 - Ala Norte (SW1-P01)</a>
+                        <a href="Switch_3_PP1/AP_06_ALA_NORTE_FREE_ZONE.html" class="ap-link">AP 06 - Ala Norte</a>
+                    </div>
+                </div>
+                
+                <!-- Otros Puertos -->
+                <h3 style="color: #1976d2; margin: 20px 0 15px 0;">🔧 Otros Puertos</h3>
+                <div class="ports-grid">
+                    <a href="Switch_3_PP1/Puerto_07_SW_3_PP1.html" class="port-link">Puerto 07</a>
+                    <a href="Switch_3_PP1/Puerto_08_SW_3_PP1.html" class="port-link">Puerto 08</a>
+                    <a href="Switch_3_PP1/Puerto_09_SW_3_PP1.html" class="port-link">Puerto 09</a>
+                    <a href="Switch_3_PP1/Puerto_10_SW_3_PP1.html" class="port-link">Puerto 10</a>
+                    <a href="Switch_3_PP1/Puerto_11_SW_3_PP1.html" class="port-link">Puerto 11</a>
+                    <a href="Switch_3_PP1/Puerto_12_SW_3_PP1.html" class="port-link">Puerto 12</a>
+                    <a href="Switch_3_PP1/Puerto_20_SW_3_PP1.html" class="port-link">Puerto 20</a>
+                    <a href="Switch_3_PP1/Puerto_21_SW_3_PP1.html" class="port-link">Puerto 21</a>
+                    <a href="Switch_3_PP1/Puerto_22_SW_3_PP1.html" class="port-link">Puerto 22</a>
+                    <a href="Switch_3_PP1/Puerto_23_SW_3_PP1.html" class="port-link">Puerto 23</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Documentación Técnica - Free Zone | Generado: 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
